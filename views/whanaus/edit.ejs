@@ -1,0 +1,72 @@
+<% layout('layouts/boilerplate')%>
+    <div class="row">
+        <h1 class="text-center">Edit Whanau</h1>
+        <div class="col-6 offset-3">
+            <form action="/whanaus/<%=whanau._id%>?_method=PUT" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="name">Whanau Name</label>
+                    <input class="form-control" type="text" id="name" name="whanau[name]" value="<%=whanau.name%>"
+                        required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name="whanau[location]"
+                        value="<%=whanau.location%>" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <!-- <div class="mb-3">
+                    <label class="form-label" for="image">Add Images</label>
+                    <input type="file" name="image" id="image" multiple>
+                </div> -->
+                <!-- </div> -->
+                <div class="mb-3">
+                    <label class="form-label" for="price">Contact Details</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="contact-label">contact:</span>
+                        <input type="text" class="form-control" id="contact" aria-label="contact"
+                            aria-describedby="contact-label" name="whanau[contact]" value="<%=whanau.contact%>"
+                            required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" type="text" id="description" name="whanau[description]" required><%=whanau.description%>
+                        </textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="form-file custom-file">
+                        <input type="file" class="form-file-input" id="image" name="image" multiple>
+                        <label class="form-file-label" for="image">
+                            <span class="form-file-text custom-file-label">Add image(s)...</span>
+                            <span class="form-file-button">Browse</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <%  whanau.images.forEach(function(img, i) { %>
+                       <img src="<%=img.thumbnail %>" class="img-thumbnail" alt="">
+                        <div class="form-check-inline">
+                            <input type="checkbox" name="deleteImages[]" value="<%= img.filename%>" id="image-<%=i%>">
+                        </div>
+                        <label for="image-<%=i%>">Delete this Image</label>
+                       <% }) %>  
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-info">Update Whanau</button>
+                </div>
+            </form>
+            <a href="/whanaus/<%= whanau._id  %> ">Back To Whanau</a>
+        </div>
+    </div>
