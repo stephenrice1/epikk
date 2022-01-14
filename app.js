@@ -21,7 +21,12 @@ const reviewRoutes = require('./routes/reviews');
 
 const MongoStore = require('connect-mongo');
 
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/epikk';
+// ---Set for Local or Server use---
+const dbUrl = 
+// process.env.DB_URL 
+// || 
+'mongodb://localhost:27017/epikk';
+
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -164,7 +169,7 @@ app.use((err, req, res, next) => {
     res.send('oh boy, something went wrong!')
 })
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 4000
 app.listen(port, () => {
     console.log(`Serving on port ${port} - Chur!`)
 })

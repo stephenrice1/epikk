@@ -58,7 +58,7 @@
                
                
                
-                <fieldset class="starability-basic">
+                <!-- <fieldset class="starability-basic">
                     <legend>Rating:</legend>
                     <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
                     <input type="radio" id="first-rate1" name="review[rating]" value="1" />
@@ -71,9 +71,9 @@
                     <label for="first-rate4" title="Very good">4 stars</label>
                     <input type="radio" id="first-rate5" name="review[rating]" value="5" />
                     <label for="first-rate5" title="Amazing">5 stars</label>
-                </fieldset>
+                </fieldset> -->
                  <div class="mb-3">
-                    <label class="form-label" for="body">Review Text</label>
+                    <label class="form-label" for="body">Say Hi!</label>
                     <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3"></textarea>
                     <div class="valid-feedback">
                         Looks good!
@@ -86,11 +86,11 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-subtitle"><%= review.author.username %></h5>
-                    <p class="starability-result" data-rating="<%=review.rating%>">
+                    <!-- <p class="starability-result" data-rating="<%=review.rating%>">
                     Rated: <%=review.rating%> stars
-                    </p>
+                    </p> -->
                     
-                    <p class="card-text">Review: <%= review.body %></p>
+                    <p class="card-text">Korero: <%= review.body %></p>
                     <% if( currentUser && review.author.equals(currentUser._id))  {%> 
                         <form action="/whanaus/<%=whanau._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
                         <button class="btn btn-sm btn-danger">Delete</button>

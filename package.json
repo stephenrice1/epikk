@@ -2,7 +2,7 @@
   "name": "epikk",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
@@ -30,6 +30,7 @@
     "multer": "^1.4.3",
     "multer-storage-cloudinary": "^4.0.0",
     "passport": "^0.5.0",
+    "passport-facebook": "^3.0.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^6.1.0",
     "sanitize-html": "^2.6.1"
