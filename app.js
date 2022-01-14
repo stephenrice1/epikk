@@ -23,9 +23,7 @@ const MongoStore = require('connect-mongo');
 
 // ---Set for Local or Server use---
 const dbUrl = 
-// process.env.DB_URL 
-// || 
-'mongodb://localhost:27017/epikk';
+process.env.DB_URL || 'mongodb://localhost:27017/epikk';
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
