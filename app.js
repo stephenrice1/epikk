@@ -18,12 +18,16 @@ const mongoSanitize = require('express-mongo-sanitize');
 const userRoutes = require('./routes/users');
 const whanauRoutes = require('./routes/whanaus');
 const reviewRoutes = require('./routes/reviews');
+const forumRoutes = require('./routes/forums');
+const postRoutes = require('./routes/posts');
+
 
 const MongoStore = require('connect-mongo');
 
 // ---Set for Local or Server use---
 const dbUrl = 
-process.env.DB_URL || 'mongodb://localhost:27017/epikk';
+// process.env.DB_URL || 
+'mongodb://localhost:27017/epikk';
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
@@ -147,6 +151,8 @@ app.use((req, res, next) => {
 app.use('/', userRoutes)
 app.use('/whanaus', whanauRoutes)
 app.use('/whanaus/:id/reviews', reviewRoutes)
+app.use('/forums', forumRoutes)
+app.use('/forums/:id/posts', postRoutes)
 
 
 app.get('/', (req, res) => {

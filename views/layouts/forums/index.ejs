@@ -1,0 +1,27 @@
+<% layout('layouts/boilerplate')%>
+
+    <h1>Welcome to the Discussion Forums</h1>
+    <div>
+        <a href="/forums/new">Start a New Thread!</a>
+    </div>
+
+    <% for (let forum of forums){%>
+        <div class="card mb-3">
+            <div class="row">
+                
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%=forum.name%>
+                        </h5>
+                        <p class="card-text">
+                            <%=forum.description%>
+                        </p>
+                        <a class="btn btn-primary" href="/forums/<%=forum._id%>">View Thread <%=forum.name%>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+

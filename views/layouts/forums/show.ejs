@@ -1,0 +1,59 @@
+<% layout('layouts/boilerplate')%>
+<link rel="stylesheet" href="/stylesheets/stars.css">
+
+<div class="row">
+    <div class="col-6">
+        <div id='map' class="border border-5 h-50"></div>
+
+        <div class="card mb-3">
+            <div class="card-body">
+                    <h5 class="card-title"><%= forum.name%></h5>
+                    <p class="card-text">"<%= forum.description%>"</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Submitted by: <%= forum.author.username%></li>
+                </ul>
+                <% if( currentUser && forum.author.equals(currentUser._id))  {%> 
+                <div class="card-body">
+                    <a href="/forums/<%=forum._id%>/edit" class="card-link btn btn-info">Edit Details</a>
+                    <form class="d-inline" action="/forums/<%=forum._id%>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger">Delete Thread</button>
+                    </form>
+                </div>
+                <% } %> 
+                <div class="card-footer text-muted">
+                    2 days ago
+                </div>
+            </div>
+
+        </div>
+        <div class="col-6 border border-5 h-100">     
+            <% if(currentUser) { %>        
+            <h2>Add a Post</h2>
+            <form action="forums<%=forum._id%>/posts" method="POST" class="mb-3 validated-form" novalidate> 
+             <div class="mb-3">
+                    <label class="form-label" for="body">Add your korero...</label>
+                    <textarea class="form-control" name="post[body]" id="body" cols="30" rows="3"></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <button class="btn btn-success">Submit</button>
+            </form>
+            <% } %> 
+            <% for(let post of forum.posts) { %>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-subtitle"><%= post.author.username %></h5>
+                                      
+                    <p class="card-text">Korero: <%= post.body %></p>
+                    <% if( currentUser && post.author.equals(currentUser._id))  {%> 
+                        <form action="/forums/<%=forum._id%>/posts/<%=post._id%>?_method=DELETE" method="POST">
+                        <button class="btn btn-sm btn-danger">Delete Post</button>
+                        </form>
+                        <% } %> 
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>

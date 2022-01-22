@@ -41,3 +41,17 @@ module.exports.reviewSchema = Joi.object({
         body: Joi.string().required()
     }).required()
 })
+
+module.exports.forumSchema = Joi.object({
+    forum: Joi.object({
+        name: Joi.string().required().min(2).escapeHTML(),
+        description: Joi.string().required().escapeHTML()
+    }).required()
+});
+
+module.exports.postSchema = Joi.object({
+    review: Joi.object({
+        // rating: Joi.number().required().min(1).max(5),
+        body: Joi.string().required()
+    }).required()
+})

@@ -1,0 +1,26 @@
+<% layout('layouts/boilerplate')%>
+    <div class="row">
+        <h1 class="text-center">New Forum Thread</h1>
+        <div class="col-6 offset-3">
+            <form action="/forums" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="name">Thread Name</label>
+                    <input class="form-control" type="text" id="name" name="forum[name]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <input class="form-control" type="text" id="description" name="forum[description]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success">Start New Thread</button>
+                </div>
+            </form>
+            <a href="/forums">Back</a>
+        </div>
+    </div>
